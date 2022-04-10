@@ -1,0 +1,8 @@
+﻿  test.c
+D:\C__代码\a01_\test.c(84,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\C__代码\a01_\test.c(84,9): message : 请考虑在格式字符串中使用“%zd”
+D:\C__代码\a01_\test.c(85,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\C__代码\a01_\test.c(85,9): message : 请考虑在格式字符串中使用“%zd”
+D:\C__代码\a01_\test.c(86,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\C__代码\a01_\test.c(86,9): message : 请考虑在格式字符串中使用“%zd”
+  a01_.vcxproj -> D:\C__代码\a01_\x64\Debug\a01_.exe

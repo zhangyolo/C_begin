@@ -1,0 +1,3 @@
+﻿  源.c
+D:\C__代码\close_c\源.c(23,1): warning C4305: “初始化”: 从“int”到“char”截断
+  close_c.vcxproj -> D:\C__代码\a01_\Debug\close_c.exe
