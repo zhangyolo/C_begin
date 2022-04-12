@@ -98,6 +98,7 @@ int main() {
 
 //求字符串的长度
 //不使用临时变量
+/*
 int my_strlen(char * str) {
 	if (*str != '\0') {
 		return 1 + my_strlen(str+1);
@@ -126,4 +127,44 @@ int main() {
 
 	printf("没有临时变量的算法：%d", my_strlen(arr));
 	return 0;
+}*/
+
+
+//利用递归求阶乘
+/*
+int fal(int n) {
+	if (n == 1) return 1;
+	else return n * fal(n - 1);
+}
+int main() {
+	int n = 5;
+	printf("%d", fal(5));
+	return 0;
+}*/
+
+
+
+//利用递归编写斐波拉契数列 1 1 2 3 5 8 13……
+int fbly(int n) {
+	if (n <=2) return 1;
+	else return fbly(n - 1) + fbly(n - 2);
+}
+
+//利用循环求第n个斐波拉契数
+int fib(int n) {
+	int a = 1; int b = 1;
+	int c = 0;
+	while (n>2)
+	{	c = a + b;
+		a = b;
+		b = c;
+		n--;
+	}
+	return c;
+
+}
+int main() {
+	int n = 5;
+	printf("利用递归：%d\n", fbly(5));
+	printf("利用循环：%d\n", fib(5));
 }
