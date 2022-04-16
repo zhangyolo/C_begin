@@ -1,0 +1,4 @@
+﻿  源.c
+D:\C__代码\debug\源.c(112,1): warning C4090: “初始化”: 不同的“const”限定符
+D:\C__代码\debug\源.c(121,1): warning C4090: “初始化”: 不同的“const”限定符
+  debug.vcxproj -> D:\C__代码\C_start2\Debug\debug.exe
