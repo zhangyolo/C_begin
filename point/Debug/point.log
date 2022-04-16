@@ -1,0 +1,4 @@
+﻿  源.c
+D:\C__代码\point\源.c(135,6): warning C4101: “arr”: 未引用的局部变量
+D:\C__代码\point\源.c(49): warning C4172: 返回局部变量或临时变量的地址: a
+  point.vcxproj -> D:\C__代码\C_start2\Debug\point.exe

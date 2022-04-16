@@ -1,0 +1,5 @@
+﻿  源.c
+D:\C__代码\struct_\源.c(50,11): warning C4133: “函数”: 从“nv *”到“Stu *”的类型不兼容
+D:\C__代码\struct_\源.c(38,6): warning C4101: “s2”: 未引用的局部变量
+D:\C__代码\struct_\源.c(37,13): warning C4101: “s”: 未引用的局部变量
+  struct_.vcxproj -> D:\C__代码\C_start2\Debug\struct_.exe
