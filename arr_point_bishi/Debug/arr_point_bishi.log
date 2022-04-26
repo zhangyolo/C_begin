@@ -1,6 +1,2 @@
 ﻿  源.c
-D:\C__代码\arr_point_bishi\源.c(93,26): warning C4047: “函数”:“const char *”与“char **”的间接级别不同
-D:\C__代码\arr_point_bishi\源.c(93,24): warning C4024: “strlen”: 形参和实参 1 的类型不同
-D:\C__代码\arr_point_bishi\源.c(96,30): warning C4047: “函数”:“const char *”与“char **”的间接级别不同
-D:\C__代码\arr_point_bishi\源.c(96,27): warning C4024: “strlen”: 形参和实参 1 的类型不同
   arr_point_bishi.vcxproj -> D:\C__代码\C_start2\Debug\arr_point_bishi.exe
