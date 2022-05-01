@@ -198,6 +198,7 @@
 //
 //}
 
+
 //int main() {
 //	unsigned int a = 0x1234;
 //	unsigned char b = *(unsigned char*) { &a };
@@ -217,6 +218,7 @@
 //	}
 //	printf("%d\n", strlen(a));//读到0就截止  255
 //}
+
 
 //杨辉三角
 //int main() {
@@ -247,6 +249,8 @@
 //}
 
 
+
+//****************************************&&&&&&&&&&&&&&&&
 /*
 a:不是我
 b:是c
@@ -270,26 +274,253 @@ d:c胡说
 //}
 
 
+//***********************************88
+////针对5个人的对名次的阐述，每一个人只有一半说对了
+////所以每个人  一半+一半=1 or 一半^一半=1
+//int main() {
+//	int a, b, c, d, e = 0;
+//	for (a = 1; a <= 5; a++) {
+//		for (b = 1; b <= 5; b++) {
+//			for (c = 1; c <= 5; c++) {
+//				for (d = 1; d <= 5; d++) {
+//					for (e = 1; e <= 5; e++) {
+//						if ((((b == 2) ^ (a == 3)) == 1) && (((b == 2) ^ (e == 4))== 1 )&&
+//							(((c == 1) ^ (d == 2)) == 1) && (((c == 5) ^ (d == 3))== 1 )&&
+//							(((e == 4) ^ (a == 1)) == 1) ){
+//							if(a*b*c*d*e==120)
+//							printf("%d %d %d %d %d\n", a, b, c, d, e);//3 1 5 2 4
+//						}
+//
+//					}
+//				}
+//			}
+//		}
+//	}
+//}
 
-//针对5个人的对名次的阐述，每一个人只有一半说对了
-//所以每个人  一半+一半=1 or 一半^一半=1
-int main() {
-	int a, b, c, d, e = 0;
-	for (a = 1; a <= 5; a++) {
-		for (b = 1; b <= 5; b++) {
-			for (c = 1; c <= 5; c++) {
-				for (d = 1; d <= 5; d++) {
-					for (e = 1; e <= 5; e++) {
-						if ((((b == 2) ^ (a == 3)) == 1) && (((b == 2) ^ (e == 4))== 1 )&&
-							(((c == 1) ^ (d == 2)) == 1) && (((c == 5) ^ (d == 3))== 1 )&&
-							(((e == 4) ^ (a == 1)) == 1) ){
-							if(a*b*c*d*e==120)
-							printf("%d %d %d %d %d\n", a, b, c, d, e);//3 1 5 2 4
-						}
+//int main() {
+//	int a[] = { 1,2,3,4,5 };
+//	int* p = (int*)(&a + 1);
+//	printf("%d %d", *(a + 1), *(p - 1));//2 5
+//}
 
-					}
-				}
-			}
+//int main() {
+//	int aa[2][5] = { 10,9,8,7,6,5,4,3,2,1 };
+//	int* p1 = (int*)(&aa + 1);
+//	int* p2 = (int*)(*(aa + 1));  ///注意二维数组的首元素指第一行，第一行加1，指向的是第二行的元素
+//	printf("%d %d", *(p1 - 1), *(p2 - 1));  //1 6
+//}
+
+
+
+
+
+
+//*********************************************88
+//左旋k个字符
+
+//1、暴力法，遍历
+void move_left(char a[20],int se) {
+	int k = 0;
+	scanf("%d", &k);
+	for (int j = 0; j < k; j++) {
+		int temp = a[0];
+		for (int i = 0; i < se; i++) {
+			a[i] = a[i + 1];
+		}
+		a[se - 1] = temp;
+	}
+}
+void print(char a[30], int se) {
+	for (int i = 0; i < se; i++)
+	{
+		printf("%c ", a[i]);
+	}
+
+	printf("\n");
+}
+
+
+#include<assert.h>
+void move_left_bypoint(char* arr, int se) {
+	assert(arr != NULL);
+	int k = 0;
+	scanf("%d", &k);
+	for (int j = 0; j < k; j++) {
+		int temp = *arr;
+		for (int i = 0; i < se; i++) {
+			*(arr+i) = *(arr+i + 1);
+		}
+		*(arr+se-1) = temp;
+	}
+}
+
+//2、三步翻转法
+//abcdef
+//ab cdef
+//ba fedc
+//cdef ab
+
+void reserve(char* l,char* r) {
+	assert(l != NULL);
+	assert(r != NULL);
+	while (l < r) {
+		char tmp = *l;
+		*l = *r;
+		*r = tmp;
+		l++;
+		r--;
+	}
+}
+void left_move_bysanbu(char* arr, int se) {
+	int k = 0;
+	scanf("%d", &k);
+	assert(k <= se);//避免翻转超出范围
+	reserve(arr, arr+k - 1);//左边翻转
+	reserve(arr+k,arr+se-1);//右边翻转
+	reserve(arr,arr+se-1);//整体翻转
+}
+
+
+//int main() {
+//	//左旋k个字符
+//	//char a[] = { "zymlovelyf" };
+//	//int se = sizeof(a) / sizeof(a[0]);
+//	////	move_left(a, se);
+//	////move_left_bypoint(a, se);
+//	//left_move_bysanbu(a, se);
+//	//print(a, se);
+//}
+
+
+//*******************
+//变换题
+void left_move_bycmp(char* arr, int k) {
+	int se = strlen(arr);
+	assert(k <= se);//避免翻转超出范围
+	reserve(arr, arr + k - 1);//左边翻转
+	reserve(arr + k, arr + se - 1);//右边翻转
+	reserve(arr, arr + se - 1);//整体翻转
+}
+#include<string.h>
+
+int isleft_move(char* s1, char* s2) {
+	int len = strlen(s1);
+	int i = 0;
+	for (i = 0; i < len; i++) {
+		left_move_bycmp(s1, 1);  ///每次只翻转一个字符，比较之后，再决定是否还要继续翻转
+		if (strcmp(s1, s2) == 0) return 1;
+
+	}
+
+	return 0;
+}
+
+//优化变换题
+int is_leftmove_youhua(char* str1, char* str2) {
+	//再str1之后追加str1
+	//判断str2是否为str1的子串
+	int len = strlen(str1);
+	int len2 = strlen(str2);
+	//strcat(str1, str1);//自己给自己追加，这个方法不适合
+	strncat(str1, str1, len);
+
+	//strstr()找字串的函数
+	int *ret=strstr(str1, str2);
+	//如果子串2的串比串1少，那么就绝对不可可能是子串1左旋之后的串，所以必须加上限制clen=len2
+	if (ret != NULL&&len==len2) {
+		return 1;
+	}
+	else return 0;
+	
+}
+
+//int main(){
+//	//给定一个字符，让另一个字符翻转之后，判定两者是否相等
+//	char arr1[30] = "abcdef";
+//	char arr2[] = "cdef";
+//	int se= sizeof(arr1) / sizeof(arr1[0]);
+//	//int ret = isleft_move(arr1, arr2);
+//	int ret = is_leftmove_youhua(arr1, arr2);
+//	if (ret==1)printf("y");
+//	else printf("no");
+//
+//	print(arr1, se);
+//
+//}
+
+
+//^^^^^^^^^^^^^^^^^^^^^^_____________杨氏矩阵
+//矩阵的每行从左到右是递增的，从上到下是递增的，请编写程序，<O(N)  说明不可以遍历查找
+//查找某一个数
+//通过右上角或者左下角去筛选
+
+
+int FindNum(int arr[3][3], int k, int row, int col) {
+	int x = 0;
+	int y = col - 1;
+	while (y>=0&&x<=row-1) {
+		if (k < arr[x][y])
+			y--;
+		else if (k > arr[x][y])
+		{
+			x++;
+		}
+		else
+		{
+			printf("下标是:<%d %d>\n ", x+1, y+1);
+			return 1;
 		}
 	}
+	return 0;
+}
+
+
+int FindNumpoint(int arr[3][3], int k, int *row, int* col) {
+	int x = 0;
+	int y = *col - 1;
+	while (y >= 0 && x <= *row - 1) {
+		if (k < arr[x][y])
+			y--;
+		else if (k > arr[x][y])
+		{
+			x++;
+		}
+		else
+		{
+			//printf("下标是:<%d %d>\n ", x + 1, y + 1);
+			*row = x;
+			*col = y;
+			return 1;
+		}
+	
+	}
+	//可以不要
+		*row = -1;
+		*col = -1;
+	return 0;
+}
+
+int main() {
+	//由于<O(n),所以不可以遍历查找
+
+	int arr[3][3] = { {1,2,3},{4,5,6},{7,8,9} };
+	int k = 90;
+
+	int x = 3;
+	int y = 3;
+	/*int ret = FindNum(arr, k, 3, 3);
+
+	if (ret) printf("yes");
+	else printf("no");*/
+
+
+	int ret = FindNumpoint(arr, k, &x, &y);  //返回型参数
+	if (ret) { 
+		printf("yes"); 
+		printf("%d %d", x, y);
+	}
+	else printf("no");
+
+	return 0;
 }
