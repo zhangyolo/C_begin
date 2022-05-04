@@ -180,19 +180,37 @@ void print_struct(struct SS tmp) {
 void print_struct_point(const struct SS* tmp) {//因为害怕指针tmp改变其变量，这样就不可以改变了
 	printf("%d %c %f", tmp->a, tmp->b, tmp->d);
 }
+//int main() {
+//	struct SS s;
+//	s.a = 9; s.b = 'w'; s.d = 3.16;
+//
+//
+//	struct SS s1 = { 0 };
+//	Ini_struct_p(&s);//传地址，通过传地址，将函数外部的变量在函数内部改变，通过地址找到变量进行改变
+//	//Ini_struct(s);//这里是传值，函数内是改变了，但是这个结构体对象本身还是没有变化；初始化不成功
+//	//只要涉及到在被调函数内改变主调函数的变量，就需要传地址到被调函数中
+//	//结构体太大之后，传值效率太低，一般结构体建议传递地址
+//
+//	print_struct(s);
+//	print_struct_point(&s);
+//
+//
+//}
+
+union Un {
+	int i;
+	char c;
+
+};
 int main() {
-	struct SS s;
-	s.a = 9; s.b = 'w'; s.d = 3.16;
+	union Un u;
+	printf("%p\n", &(u.i));
+	printf("%p\n", &(u.c));
 
-
-	struct SS s1 = { 0 };
-	Ini_struct_p(&s);//传地址，通过传地址，将函数外部的变量在函数内部改变，通过地址找到变量进行改变
-	//Ini_struct(s);//这里是传值，函数内是改变了，但是这个结构体对象本身还是没有变化；初始化不成功
-	//只要涉及到在被调函数内改变主调函数的变量，就需要传地址到被调函数中
-	//结构体太大之后，传值效率太低，一般结构体建议传递地址
-
-	print_struct(s);
-	print_struct_point(&s);
-
-
+	u.i = 0x11223344;
+	printf("%x\n", u.i);
+	printf("%x\n", u.c);
+	u.c = 0x55;
+	printf("%x\n", u.i);
+	printf("%x\n", u.c);
 }
