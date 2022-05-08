@@ -1,3 +1,2 @@
 ﻿  源.c
-D:\C__代码\file_op\源.c(120,6): warning C4013: “gets”未定义；假设外部返回 int
   file_op.vcxproj -> D:\C__代码\C_start2\Debug\file_op.exe

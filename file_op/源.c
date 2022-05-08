@@ -115,14 +115,129 @@
 
 
 
-//从标准输入流中读取并输出到输出流之中
-int main() {
-	char buf[1024] = { 0 };
+////从标准输入流中读取并输出到输出流之中
+//int main() {
+//	char buf[1024] = { 0 };
+//
+//	//fgets(buf, 1024, stdin);//输入到输入流中
+//	//fputs(buf, stdout);//输出到标准输出
+//	
+//	//可以识别空格，并输出
+//	gets(buf);
+//	puts(buf);
+//}
 
-	//fgets(buf, 1024, stdin);//输入到输入流中
-	//fputs(buf, stdout);//输出到标准输出
-	
-	//可以识别空格，并输出
-	gets(buf);
-	puts(buf);
+
+
+//以特定格式写文件
+
+//struct S {
+//	int age;
+//	char arr[10];
+//	float f;
+//};
+//int main() {
+//	//struct S s = { 20,"zhaninmi",3.45 };
+//	//FILE* p = fopen("test.txt", "w");
+//	//if (!p) { return; }
+//	//
+//	////以特定的格式将内容写入p指向的文件中
+//	//fprintf(p, "%d %s %f",s.age,s.arr,s.f);
+//
+//
+//	//	
+//	struct S s = { 0 };
+//	FILE* p = fopen("test.txt", "r");
+//	if (NULL==p) { return; }
+//
+//	s.age = 10;
+//	s.f = 9.9;
+//	strcpy(s.arr, "chenwang"); 
+//	//***************************8
+//	//注意这里对结构体中的数组赋值，可以使用，strcpy或者for循环赋值
+//	// 	   但是不可以使用s.arr = "sdfs";这样去赋值，会报出错误“表达式的左值应为可修改的左值”
+//	
+//	//以特定的格式将内容写入p指向的文件
+//	fscanf(p, "%d %s %f", &(s.age), &(s.arr), &(s.f));
+//	//以特定的格式将p指向的内容打印出来
+//	printf("%d %s %f", s.age, s.arr, s.f);
+//
+//
+//
+//	//从标准输入中输入信息，并从标准输出打印
+//	fscanf(stdin, "%d %s %f", &(s.age), &(s.arr), &(s.f));
+//	fprintf(stdout,"%d %s %f", s.age, s.arr, s.f);
+//
+//	fclose(p);
+//	p = NULL;
+//}
+//
+
+
+//struct S {
+//	int age;
+//	float score;
+//	char arr[10];
+//};
+//int main() {
+//	struct S s = { 100,3.4,"zz" };
+//	char buf[1024];
+//	struct S tmp = { 0 };
+//	//将内容按格式写到buf中
+//	sprintf(buf, "%d %f %s", s.age, s.score, s.arr);
+//	//打印buf中的内容以字符串的形式打印出来
+//	printf("%s\n", buf);
+//
+//	//将buf中的内容以格式化，存到tmp中
+//	sscanf(buf, "%d %f %s", &(tmp.age), &(tmp.score), &(tmp.arr));
+//	//并按格式打印出tmp中的内容
+//	printf("%d %f %s", tmp.age, tmp.score, tmp.arr);
+//}
+
+
+
+//struct S {
+//	char arr[10];
+//	int age;
+//	float score;
+//};
+////以二进制写文件
+//int main() {
+//	/*FILE* pf = fopen("test.txt", "wb");
+//	if (!pf) { return; }
+//	struct S s = { "sds",20,23.9 };
+//	//二进制写文件
+//	//向pf指向的文件中写入结构体s的内容
+//	fwrite(&s, sizeof(struct S), 1, pf);
+//	fclose(pf);
+//*/
+//
+//
+//
+//	
+//	FILE* pf = fopen("test.txt", "rb");
+//	if (!pf) { return; }
+//	struct S tmp = { 0 };
+//	//二进制读文件
+//	//将pf指向的文件读取1个内容，存储到tmp中
+//	fread(&tmp, sizeof(struct S), 1, pf);
+//
+//	printf("%s %d %f", tmp.arr, tmp.age, tmp.score);//sds 20 23.900000
+//
+//	fclose(pf);
+//	pf = NULL;
+//}
+
+
+
+//定位指针
+int main() {
+	FILE* pf = fopen("ww.txt", "r");
+	if (!pf) { return; }
+	fseek(pf, -2, SEEK_END);
+	int ch = fgetc(pf);
+	printf("%c\n", ch);
+	fclose(pf);
+	pf = NULL;
+
 }

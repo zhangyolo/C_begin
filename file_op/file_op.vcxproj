@@ -142,6 +142,7 @@
     <ClCompile Include="源.c" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="test.txt" />
     <Text Include="ww.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
