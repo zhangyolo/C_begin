@@ -231,13 +231,97 @@
 
 
 //定位指针
+//int main() {
+//	FILE* pf = fopen("ww.txt", "r");
+//	if (!pf) { return; }
+//	fseek(pf, -2, SEEK_END);
+//	int ch = fgetc(pf);
+//	printf("%c\n", ch);
+//	fclose(pf);
+//	pf = NULL;
+//
+//}
+// 
+// 
+
+
+
+
+
+//定位指针
+//int main() {
+//	FILE* pf = fopen("ww.txt", "r");
+//	if (!pf) { return; }
+//	fseek(pf, -2, SEEK_END);
+//	
+//	int ch = fgetc(pf);
+//	printf("%c\n", ch);
+//
+//	int pos = ftell(pf);//返回当前指针的位置相对于文件开始的偏移量
+//	printf("%d\n", pos);
+//
+//	fgetc(pf);//获取一个字符之后，指针就会向后移动一个
+//	pos = ftell(pf);//返回当前指针的位置相对于文件开始的偏移量
+//	printf("%d\n", pos);
+//
+//	rewind(pf);
+//	pos = ftell(pf);//返回当前指针的位置相对于文件开始的偏移量
+//	printf("%d\n", pos);
+//
+//	fclose(pf);
+//	pf = NULL;
+//
+//}
+
+
+//int main() {
+//	//FILE* pf = fopen("feof_.txt", "r");
+//	//if (pf == NULL)return;
+//
+//	//int ch = fgetc(pf);
+//	//printf("%d\n", ch);//如果文本文件是空，那么就返回-1
+//
+//	//fclose(pf);
+//	//pf = NULL;
+//
+//
+//	//错误提示
+//	// 	   1、
+//	//printf("%s\n", strerror(errno));
+//	//2、
+//	FILE* pf = fopen("no.txt", "r");
+//	if (!pf) {
+//	// 	   1、
+//		printf("%s\n", strerror(errno));
+//	//2、
+//		perror("heh"); return;
+//	}
+//	fclose(pf);
+//	pf = NULL;
+//}
+
+
 int main() {
 	FILE* pf = fopen("ww.txt", "r");
-	if (!pf) { return; }
-	fseek(pf, -2, SEEK_END);
-	int ch = fgetc(pf);
-	printf("%c\n", ch);
+	if (!pf) { 
+		perror("打开文件失败"); return; 
+		 }
+
+	int ch = 0;
+	while ((ch = fgetc(pf) )!= EOF) {
+		putchar(ch);
+	}
+
+
+	//判断读取完成的原因：
+	if (ferror(pf)) {//读取的时候，发生失败，返回真
+		printf("errro");
+	}
+	else if (feof(pf)) {//读取函数结束，返回非零
+		printf("end of file");//guizhouccxuezztend of file
+	}
 	fclose(pf);
 	pf = NULL;
 
 }
+
